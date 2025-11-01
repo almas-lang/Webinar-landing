@@ -1,6 +1,19 @@
 import { motion } from 'motion/react';
+import { eventConfig, getRegistrationEndDate } from '../config/eventConfig';
+import { useState, useEffect } from 'react';
 
 export function StickyBottomBar() {
+  const [seatsLeft] = useState(() => Math.floor(Math.random() * 11) + 5); // Random number between 5-15
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsVisible(prev => !prev);
+    }, 1000); // Toggle every second
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <motion.div
       initial={{ y: 100 }}
@@ -22,23 +35,32 @@ export function StickyBottomBar() {
                 Registration Ends on
               </span>
               <span className="text-[#F24646] text-sm lg:text-base">
-                30, October '25
+                {getRegistrationEndDate()}
               </span>
             </div>
             <div className="text-[#1A1A1A]/60 text-xs lg:text-sm mt-0.5">
               <span className="text-[#F24646]">Almost Full</span>
-              {' '}— Only 12 Seats Left
+              {' '}—{' '}
+              <span
+                className="text-[#1A1A1A] transition-opacity duration-300"
+                style={{ opacity: isVisible ? 1 : 0 }}
+              >
+                Only {seatsLeft} Seats Left
+              </span>
             </div>
           </div>
 
           {/* Right: CTA Button */}
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-[#1A1A1A] text-white px-8 py-3 rounded-full transition-all duration-300 flex-shrink-0 hover:bg-[#F24646]"
+          <motion.a
+            href={eventConfig.pgPaymentLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.02, boxShadow: "0 10px 40px rgba(242, 70, 70, 0.4)" }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-flex items-center justify-center bg-[#F24646] text-white px-6 sm:px-10 lg:px-14 py-3 sm:py-4 lg:py-5 rounded-lg transition-all duration-300 shadow-lg text-center text-sm sm:text-base lg:text-xl"
           >
-            Enroll Now
-          </motion.button>
+            Register Now!
+          </motion.a>
         </div>
       </div>
     </motion.div>

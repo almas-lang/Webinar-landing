@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { eventConfig } from '../config/eventConfig';
 
 export function Footer() {
   return (
@@ -18,15 +19,18 @@ export function Footer() {
             <p className="text-xl text-white/70 mb-10">
               Join thousands of designers who are making the leap from execution to strategic leadership
             </p>
-            <motion.button
+            <motion.a
+              href={eventConfig.pgPaymentLink}
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.02, boxShadow: "0 10px 40px rgba(242, 70, 70, 0.4)" }}
               whileTap={{ scale: 0.98 }}
-              className="bg-[#F24646] text-white px-12 py-5 rounded-lg transition-all duration-300 shadow-lg text-lg"
+              className="inline-flex items-center justify-center bg-[#F24646] text-white px-6 sm:px-10 lg:px-16 py-3 sm:py-4 lg:py-6 rounded-lg transition-all duration-300 shadow-lg text-center text-sm sm:text-base lg:text-xl"
             >
-              Yes! Register Me For The Free Masterclass
-            </motion.button>
+              Yes! Register Me For The Webinar
+            </motion.a>
             <p className="text-sm text-white/50 mt-6">
-              100% Free • No Credit Card Required • Limited Seats Available
+              Limited Seats Available!
             </p>
           </motion.div>
         </div>

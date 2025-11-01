@@ -1,3 +1,4 @@
+import { Routes, Route } from 'react-router-dom';
 import { Hero } from "./components/Hero";
 import { ToolsSection } from "./components/ToolsSection";
 import { EligibilityChecklist } from "./components/EligibilityChecklist";
@@ -9,8 +10,9 @@ import { MeetMentor } from "./components/MeetMentor";
 import { FAQ } from "./components/FAQ";
 import { Footer } from "./components/Footer";
 import { StickyBottomBar } from "./components/StickyBottomBar";
+import { ThankYou } from "./pages/ThankYou";
 
-export default function App() {
+function HomePage() {
   return (
     <main className="min-h-screen bg-white">
       <Hero />
@@ -25,5 +27,14 @@ export default function App() {
       <Footer />
       <StickyBottomBar />
     </main>
+  );
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/thank-you" element={<ThankYou />} />
+    </Routes>
   );
 }

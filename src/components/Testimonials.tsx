@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { Star } from 'lucide-react';
+import { eventConfig } from '../config/eventConfig';
 
 export function Testimonials() {
   const testimonials = [
@@ -88,20 +89,23 @@ export function Testimonials() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-16 text-center"
         >
-          <div className="bg-[#1A1A1A] rounded-2xl p-12 lg:p-16">
+          <div className="bg-[#1A1A1A] rounded-lg p-12 lg:p-16">
             <h3 className="text-2xl lg:text-4xl text-white mb-4">
               Ready to Join Them?
             </h3>
             <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
               Transform from execution to strategy and become the design leader your organization needs.
             </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-[#F24646] text-white px-8 py-4 rounded-full hover:bg-[#d93d3d] transition-colors duration-300"
+            <motion.a
+              href={eventConfig.pgPaymentLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.02, boxShadow: "0 10px 40px rgba(242, 70, 70, 0.4)"  }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center justify-center bg-[#F24646] text-white px-6 sm:px-10 lg:px-14 py-3 sm:py-4 lg:py-5 rounded-lg transition-all duration-300 shadow-lg text-center text-sm sm:text-base lg:text-l"
             >
               Start Your Journey Today
-            </motion.button>
+            </motion.a>
           </div>
         </motion.div>
       </div>

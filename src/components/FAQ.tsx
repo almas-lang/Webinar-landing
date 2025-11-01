@@ -5,6 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "./ui/accordion";
+import { eventConfig } from '../config/eventConfig';
 
 export function FAQ() {
   const faqs = [
@@ -92,13 +93,16 @@ export function FAQ() {
           <p className="text-[#1A1A1A]/60 mb-6">
             Still have questions? We're here to help!
           </p>
-          <motion.button
-            whileHover={{ scale: 1.02 }}
+          <motion.a
+            href={eventConfig.pgPaymentLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.02, boxShadow: "0 10px 40px rgba(242, 70, 70, 0.4)" }}
             whileTap={{ scale: 0.98 }}
-            className="bg-[#F24646] text-white px-10 py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-2xl"
+              className="inline-flex items-center justify-center bg-[#F24646] text-white px-6 sm:px-10 lg:px-16 py-3 sm:py-4 lg:py-6 rounded-lg transition-all duration-300 shadow-lg text-center text-sm sm:text-base lg:text-xl"
           >
             Register Now For The Masterclass
-          </motion.button>
+          </motion.a>
         </motion.div>
       </div>
     </section>
